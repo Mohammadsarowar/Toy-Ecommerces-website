@@ -5,9 +5,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import router from './rougths/Rougth.jsx';
+import AuthProvider from './Component/AuthProvider/AuthProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+  <AuthProvider>
     <RouterProvider router={router} />
+  </AuthProvider>
+    
   </React.StrictMode>,
 )
