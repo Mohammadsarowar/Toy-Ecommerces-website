@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const RegistrationPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [photo, setPhoto] = useState('');
+ const {createUser} = useContext(AuthContext)
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -16,11 +19,27 @@ const RegistrationPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  const handlePhoto = (e) => {
+    setPhoto(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    createUser(name,email,password,photo)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(user);
+      // ...
+   
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    });
     // Handle form submission logic here
-    console.log('Form submitted:', { name, email, password });
+    console.log('Form submitted:', { name, email, password,photo });
   };
 
   return (
@@ -45,9 +64,10 @@ const RegistrationPage = () => {
             Photo Url
           </label>
           <input
-            type="photo"
+            type="text"
             id="name"
-            value={name}
+            name="photo"
+            onChange={handlePhoto}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
