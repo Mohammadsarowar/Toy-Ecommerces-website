@@ -3,6 +3,10 @@ import Toys from "./Toys";
 
 const AllToy = () => {
   const [data, setData] = useState([]);
+  const [showAll,setShow] = useState(false);
+  const handleShowAll = () =>{
+        setShow(true)
+  }
   useEffect(() => {
     fetch("http://localhost:5000/allToy")
       .then((res) => res.json())
@@ -22,10 +26,16 @@ const AllToy = () => {
 </div>
 
       <div className="grid grid-cols-3 gap-5">
-        {data.map((d) => (
+        {data.slice(0,showAll ?50 :14).map((d) => (
           <Toys key={d._id} toys={d}></Toys>
         ))}
       </div>
+      <div className="text-center m-5">
+         {!showAll && (
+                <button onClick={handleShowAll} className='btn'>Show All</button>
+            )}
+      </div>
+    
     </div>
   );
 };

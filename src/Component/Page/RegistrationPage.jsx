@@ -70,7 +70,7 @@ const RegistrationPage = () => {
             value={name}
             onChange={handleNameChange}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
+          
           />
         </div>
         <div>
@@ -83,7 +83,7 @@ const RegistrationPage = () => {
             name="photo"
             onChange={handlePhoto}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
+           
           />
         </div>
         <div>
@@ -91,12 +91,13 @@ const RegistrationPage = () => {
             Email
           </label>
           <input
+          required
             type="email"
             id="email"
             value={email}
             onChange={handleEmailChange}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
+          
           />
         </div>
         <div>

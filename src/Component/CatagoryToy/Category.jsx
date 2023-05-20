@@ -14,7 +14,7 @@ const Category = ({ data }) => {
     seller_name,
     toy_name,
   } = data;
-  console.log(data);
+
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>

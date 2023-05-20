@@ -20,6 +20,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li><Link to="/addToy">Add A Toy</Link></li>
+        <li><Link to="/myToys">My Toys</Link></li>
         <li><Link to="/blog">Blogs</Link></li>
       </ul>
     </div>
@@ -35,6 +36,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li><Link to="/addToy">Add A Toy</Link></li>
+        <li><Link to="/myToys">My Toys</Link></li>
         <li><Link to="/blog">Blogs</Link></li>
     </ul>
   </div>
@@ -42,7 +44,7 @@ const Navbar = () => {
  {user?<div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div title={user?.displayName} className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <img src={user?.photoURL} />
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
