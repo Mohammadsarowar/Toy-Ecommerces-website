@@ -25,7 +25,7 @@ const RegistrationPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUser(name,email,password,photo)
+    createUser(email,password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
@@ -103,7 +103,7 @@ const RegistrationPage = () => {
           confirm Password
           </label>
           <input
-            type="confirm-password"
+            type="password"
             id="password"
             value={password}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
