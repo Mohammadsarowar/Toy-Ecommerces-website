@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const RegistrationPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [photo, setPhoto] = useState('');
- const {createUser} = useContext(AuthContext)
+ const {createUser,singInWithGoogle} = useContext(AuthContext)
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -41,9 +42,22 @@ const RegistrationPage = () => {
     // Handle form submission logic here
     console.log('Form submitted:', { name, email, password,photo });
   };
+  singInWithGoogle()
+  .then((result) => {
+    const user = result.user;
+    console.log(user);
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  
+    // ...
+  });
 
   return (
-    <div className="flex justify-center items-center h-screen mx-10">
+    <div className="flex justify-center items-center h-screen mx-10 card-body">
       <form className="w-96 bg-white rounded-lg shadow-xl p-8 ">
         <h2 className="text-2xl font-bold mb-8">Registration</h2>
         <div>
@@ -110,6 +124,7 @@ const RegistrationPage = () => {
             required
           />
         </div>
+        <p>Already have an account ? <Link to="/login" className='link link-primary'>LogIn</Link> </p>
         <button
           type="submit"
           onClick={handleSubmit}
@@ -117,7 +132,7 @@ const RegistrationPage = () => {
         >
           Register
         </button>
-      </form>
+      </form> <button onClick={singInWithGoogle} className="btn btn-outline btn-secondary mt-5">Login with Google</button>
     </div>
   );
 };
