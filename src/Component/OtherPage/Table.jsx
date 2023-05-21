@@ -16,9 +16,23 @@ const Table = ({data,handleDelete}) => {
         toy_name,
       } = data;
 
-    const handleUpdate = () => {
-        //
+      const handleUpdate = (id) => {
+        fetch(`http://localhost:5000/update/${id}`,{
+            method:'PATCH',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify({status:'confirm'})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data);
+          if(data.modifiedCount > 0) {
+            //update staet
+          }
+        })
     }
+  
     return (
         <div>
              <tr>
@@ -49,7 +63,7 @@ const Table = ({data,handleDelete}) => {
             <UpdateModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
-                    
+                    props ={data}
                     handleUpdate={handleUpdate}
                   />
           </th>

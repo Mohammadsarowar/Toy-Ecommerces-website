@@ -10,8 +10,15 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const handleUpdate = () => {
-      //
+  const handleUpdate = (id) => {
+      fetch(`http://localhost:5000/update/${id}`)
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data);
+        if(data.modifiedCount > 0) {
+          //update staet
+        }
+      })
   }
 
   useEffect(()=>{
@@ -23,7 +30,6 @@ const MyToys = () => {
   },[user])
 
   const handleDelete =(id) => {
-
     fetch(`http://localhost:5000/toyDelete/${id}`,{
        method:"DELETE"
      })
@@ -40,11 +46,9 @@ const MyToys = () => {
       setRemove(remaining)
      }
      })
-    
-  
-    
-
    }
+
+
   return (
     <div className="overflow-x-auto w-full">
     <table className="table w-full">
@@ -65,7 +69,7 @@ const MyToys = () => {
       <tbody>
         {/* row 1 */}
        {
-      jobs.map(d=><Table key={d._id} handleDelete={handleDelete} data={d}></Table>)
+      jobs.map(d=><Table key={d._id}handleDelete={handleDelete} data={d}></Table>)
        }
       </tbody>
     

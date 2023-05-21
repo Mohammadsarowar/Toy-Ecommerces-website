@@ -1,10 +1,11 @@
 import React from "react";
 
-const UpdateModal = ({ props }) => {
+const UpdateModal = ({ props,handleUpdate }) => {
+    const {_id} = props
   return (
     <div>
       {/* The button to open modal */}
-      <label htmlFor="my-modal-6" className="btn btn-ghost btn-md bold ">
+      <label htmlFor="my-modal-6" onClick={()=>handleUpdate(_id)} className="btn btn-ghost btn-md bold ">
         Update
       </label>
 
