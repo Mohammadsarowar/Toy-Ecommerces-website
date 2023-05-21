@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import useTitle from '../OtherPage/useTitle';
 
 const MyToys = () => {
+   useTitle('MyToys')
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   // useEffect(() => {

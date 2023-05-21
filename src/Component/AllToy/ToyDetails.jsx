@@ -1,7 +1,9 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../OtherPage/useTitle";
 
 const ToyDetails = () => {
+  useTitle('ToyDetails')
   const data = useLoaderData();
   const {
     description,

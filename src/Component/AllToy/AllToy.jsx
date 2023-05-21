@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Toys from "./Toys";
+import useTitle from "../OtherPage/useTitle";
 
 const AllToy = () => {
+  useTitle('AllToy')
   const [data, setData] = useState([]);
   const [showAll,setShow] = useState(false);
   const handleShowAll = () =>{

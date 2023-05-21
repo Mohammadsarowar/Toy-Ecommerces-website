@@ -1,8 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useTitle from "../OtherPage/useTitle";
 
 const Login = () => {
+  useTitle('login')
   const { singIn, singInWithGoogle } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();

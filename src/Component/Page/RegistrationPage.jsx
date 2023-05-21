@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import useTitle from '../OtherPage/useTitle';
 
 const RegistrationPage = () => {
+  useTitle('Registration')
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

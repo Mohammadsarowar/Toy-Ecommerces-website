@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "./useTitle";
 
 const AddToy = () => {
+      useTitle('AddToy')
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target

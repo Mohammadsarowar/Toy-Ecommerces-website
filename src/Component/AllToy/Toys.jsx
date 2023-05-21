@@ -1,7 +1,9 @@
 import React from "react";
 import { FaBeer, FaDollarSign } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import useTitle from "../OtherPage/useTitle";
 const Toys = ({ toys }) => {
+  useTitle('Toys')
   const { _id,picture_url,seller_email,toy_name,quantity,price,description  } = toys
 
   return (

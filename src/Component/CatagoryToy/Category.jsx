@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
 import { FaBeer, FaDollarSign, FaShoppingBasket } from "react-icons/fa";
+import useTitle from "../OtherPage/useTitle";
 const Category = ({ data }) => {
+  useTitle('Category')
   const {
     _id,
     description,

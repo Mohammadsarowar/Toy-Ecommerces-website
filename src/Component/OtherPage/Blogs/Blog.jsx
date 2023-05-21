@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../useTitle';
 
 const BlogsPage = () => {
+  useTitle('Blogs')
   const blogs = [
     {
       id: 1,
