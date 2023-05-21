@@ -18,7 +18,7 @@ const Toys = ({ toys }) => {
     </h2>
     <p>{description}</p>
     <div className="card-actions justify-end">
-      <div className="badge badge-outline"> {quantity}</div>
+      <div className="badge badge-outline">Quantity: {quantity}</div>
       <div className="badge badge-outline"><FaDollarSign />{price}</div>
     </div>
     <div className="card-actions justify-end">

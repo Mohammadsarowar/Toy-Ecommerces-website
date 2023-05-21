@@ -1,25 +1,50 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import useTitle from '../OtherPage/useTitle';
-import UpdateModal from '../OtherPage/UpdateModal';
+import Swal from 'sweetalert2'
+import Table from '../OtherPage/Table';
 
 const MyToys = () => {
    useTitle('MyToys')
+   const [remove,setRemove] = useState()
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  console.log(jobs);
   const handleUpdate = () => {
-      
+      //
   }
-  // useEffect(() => {
-  //     fetch(`https://toy-marketplace-server-mdsarowarhang-gmailcom.vercel.app/myToys/${user?.email}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-          
-  //         setJobs(data);
-  //     }, []);
-  //       });
+
+  useEffect(()=>{
+    fetch(`https://toy-marketplace-server-mdsarowarhang-gmailcom.vercel.app/myToys/${user?.email}`)
+    .then(res=>res.json())
+    .then(data=>{
+      setJobs(data);
+    })
+  },[user])
+
+  const handleDelete =(id) => {
+
+    fetch(`http://localhost:5000/toyDelete/${id}`,{
+       method:"DELETE"
+     })
+     .then(res=>res.json())
+     .then(data=>{
+        Swal.fire({
+       title: 'success!',
+       text: 'Do you want to delete',
+       icon: 'warning',
+       confirmButtonText: 'Delete'
+     })
+     if(data.deletedCount>0){
+      const remaining = jobs.filter(booking=>booking._id !== id)
+      setRemove(remaining)
+     }
+     })
+    
+  
+    
+
+   }
   return (
     <div className="overflow-x-auto w-full">
     <table className="table w-full">
@@ -39,43 +64,9 @@ const MyToys = () => {
       </thead>
       <tbody>
         {/* row 1 */}
-        <tr>
-        <th>1</th>
-          
-          <td>
-            <div className="flex items-center space-x-3">
-              <div className="avatar">
-                <div className="mask mask-squircle w-12 h-12">
-                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                </div>
-              </div>
-              
-            </div>
-          </td>
-          <td>
-            Zemlak, Daniel and Leannon
-            <br/>
-            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-          </td>
-          <td>Purple</td>
-          <td>Purple</td>
-          <td>Purple</td>
-          <td>Purple</td>
-          <th>
-            {/* <button  onClick={() => setModalShow(true)} className="btn btn-ghost btn-md bold ">Update
-            
-            </button> */}
-            <UpdateModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                    jobs={jobs}
-                    handleUpdate={handleUpdate}
-                  />
-          </th>
-          <th>
-            <button  className="btn btn-ghost btn-md bold ">Delate</button>
-          </th>
-        </tr>
+       {
+      jobs.map(d=><Table key={d._id} handleDelete={handleDelete} data={d}></Table>)
+       }
       </tbody>
     
       

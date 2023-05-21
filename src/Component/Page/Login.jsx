@@ -26,20 +26,23 @@ const Login = () => {
         console.log(errorMessage);
       });
   };
-  singInWithGoogle()
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      // ...
-    });
+  
+  
+  const singInWith = () => {
+    singInWithGoogle()
+  .then((result) => {
+    const user = result.user;
+    console.log(user);
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  
+    // ...
+  });
+  }
   return (
     <div
       className="hero min-h-screen bg-base-200"
@@ -87,7 +90,7 @@ const Login = () => {
             </div>
           </form>
           <button
-            onClick={singInWithGoogle}
+            onClick={singInWith}
             className="btn btn-outline btn-secondary mt-5"
           >
             Login with Google

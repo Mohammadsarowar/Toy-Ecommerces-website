@@ -44,7 +44,9 @@ const RegistrationPage = () => {
     // Handle form submission logic here
     console.log('Form submitted:', { name, email, password,photo });
   };
-  singInWithGoogle()
+  
+  const singInWith = () => {
+    singInWithGoogle()
   .then((result) => {
     const user = result.user;
     console.log(user);
@@ -57,6 +59,8 @@ const RegistrationPage = () => {
   
     // ...
   });
+  }
+  
 
   return (
     <div className="flex justify-center items-center h-screen mx-10 card-body">
@@ -135,7 +139,8 @@ const RegistrationPage = () => {
         >
           Register
         </button>
-      </form> <button onClick={singInWithGoogle} className="btn btn-outline btn-secondary mt-5">Login with Google</button>
+        <button onClick={singInWith} className="btn btn-outline btn-secondary mt-2 w-full">Login with Google</button>
+      </form> 
     </div>
   );
 };
