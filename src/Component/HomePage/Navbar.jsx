@@ -25,7 +25,7 @@ const Navbar = () => {
       </ul>
     </div>
     <img className='w-12 ml-10 rounded-full' src='https://dynamic.brandcrowd.com/asset/logo/45717077-bb93-471b-aa19-e7764fea1dcf/logo-search-grid-1x?logoTemplateVersion=1&v=637673530829170000&text=toy+markerples'></img>
-    <a className="btn btn-ghost normal-case text-xl">Slogan Here</a>
+    <a className="btn btn-ghost normal-case text-xl">Baby Apparel</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

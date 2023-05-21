@@ -6,11 +6,12 @@ const MyToys = () => {
    useTitle('MyToys')
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
+  console.log(jobs);
   // useEffect(() => {
-  //     fetch(`http://localhost:5000/myToys/${user?.email}`)
+  //     fetch(`https://toy-marketplace-server-mdsarowarhang-gmailcom.vercel.app/myToys/${user?.email}`)
   //       .then((res) => res.json())
   //       .then((data) => {
-  //         console.log(data);
+          
   //         setJobs(data);
   //     }, []);
   //       });

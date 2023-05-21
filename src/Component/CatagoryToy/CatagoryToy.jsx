@@ -8,7 +8,7 @@ const CatagoryToy = () => {
     setActiveTab(tabName);
   };
   useEffect(() => {
-    fetch("http://localhost:5000/allToy")
+    fetch("https://toy-marketplace-server-mdsarowarhang-gmailcom.vercel.app/allToy")
       .then((res) => res.json())
       .then((result) => {
         setToys(result);

@@ -1,6 +1,6 @@
 import React from "react";
 import useTitle from "./useTitle";
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 const AddToy = () => {
       useTitle('AddToy')
     const handleSubmit = (e) => {
@@ -18,13 +18,21 @@ const AddToy = () => {
         const result = {name,picture_url,seller_name,seller_email,subCategory,price,rating,quantity,description}
         console.log(result);
 
-        fetch("http://localhost:5000/post-toys", {
+        fetch("https://toy-marketplace-server-mdsarowarhang-gmailcom.vercel.app/post-toys", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(result),
           })
             .then((res) => res.json())
             .then((result) => {
+              if(result.insertedId){
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'Do you want to continue',
+                  icon: 'error',
+                  confirmButtonText: 'Cool'
+                })
+               }
               console.log(result);
             });
     }
@@ -43,7 +51,7 @@ const AddToy = () => {
             className="border m-2 border-gray-300 px-2 py-1 mt-2 input input-bordered input-secondary w-full max-w-xs"
           />
           <label htmlFor="name" className="text-lg mt-4">
-            Name
+           Toy Name
           </label>
           <input
             name="name"
