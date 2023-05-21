@@ -43,7 +43,7 @@ const UpdateModal = ({ props,handleUpdate }) => {
           </div>
     
          
-       
+       {/* ju */}
           </div>
 
           <div className="modal-action">
