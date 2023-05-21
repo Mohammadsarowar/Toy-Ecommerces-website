@@ -42,7 +42,6 @@ const ToyDetails = () => {
               <tbody>
                 {/* row 1 */}
                 <tr>
-                  <th>1</th>
                   <td>{seller_name}</td>
                   <td>{seller_email}</td>
                   <td>{quantity}</td>

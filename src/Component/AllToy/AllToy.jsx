@@ -40,7 +40,7 @@ const AllToy = () => {
 </div>
 </div>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
         {data.slice(0,showAll ?50 :14).map((d) => (
           <Toys key={d._id} toys={d}></Toys>
         ))}
