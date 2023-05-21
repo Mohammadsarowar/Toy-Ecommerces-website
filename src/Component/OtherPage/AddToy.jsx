@@ -1,6 +1,6 @@
 import React from "react";
 import useTitle from "./useTitle";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2'
 const AddToy = () => {
       useTitle('AddToy')
     const handleSubmit = (e) => {
@@ -27,10 +27,10 @@ const AddToy = () => {
             .then((result) => {
               if(result.insertedId){
                 Swal.fire({
-                  title: 'Error!',
+                  title: 'success!',
                   text: 'Do you want to continue',
-                  icon: 'error',
-                  confirmButtonText: 'Cool'
+                  icon: 'success',
+                  confirmButtonText: 'Ok'
                 })
                }
               console.log(result);
