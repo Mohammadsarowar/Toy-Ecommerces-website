@@ -11,67 +11,44 @@ const UpdateModal = ({ props,handleUpdate }) => {
 
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
+      <div className="modal modal-bottom sm:modal-middle justify-center">
         <div className="modal-box">
           {/* main field */}
           <div className="grid grid-cols-1 gap-5">
           <div className="flex gap-5">
-             <label className="label">
-            <span className="label-text">Email</span>
+             <label className="label mr-12">
+            <span className="label-text ">Price Here</span>
           </label>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder="Price here"
               className="input input-bordered input-secondary w-full max-w-xs"
             />
           </div>
           <div className="flex gap-5">
              <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">available quantity</span>
           </label>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder="available quantity"
               className="input input-bordered input-secondary w-full max-w-xs"
             />
           </div>
           <div className="flex gap-5">
              <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">Detail description</span>
           </label>
-            <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
+          <textarea className="textarea textarea-warning" placeholder="Detail description"></textarea>
           </div>
-          <div className="flex gap-5">
-             <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-            <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-          </div>
-          <div className="flex gap-5">
-             <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-            <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered input-secondary w-full max-w-xs"
-            />
-          </div>
+    
          
        
           </div>
 
           <div className="modal-action">
             <label htmlFor="my-modal-6" className="btn">
-              Yay!
+              Okey!
             </label>
           </div>
         </div>

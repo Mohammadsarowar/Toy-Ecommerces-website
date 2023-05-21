@@ -10,16 +10,7 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const handleUpdate = (id) => {
-      fetch(`http://localhost:5000/update/${id}`)
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data);
-        if(data.modifiedCount > 0) {
-          //update staet
-        }
-      })
-  }
+ 
 
   useEffect(()=>{
     fetch(`https://toy-marketplace-server-mdsarowarhang-gmailcom.vercel.app/myToys/${user?.email}`)
@@ -30,7 +21,7 @@ const MyToys = () => {
   },[user])
 
   const handleDelete =(id) => {
-    fetch(`http://localhost:5000/toyDelete/${id}`,{
+    fetch(` https://toy-marketplace-server-teal.vercel.app/toyDelete/${id}`,{
        method:"DELETE"
      })
      .then(res=>res.json())
@@ -47,6 +38,27 @@ const MyToys = () => {
      }
      })
    }
+   const handleUpdate = (id) => {
+    fetch(` https://toy-marketplace-server-teal.vercel.app/update/${id}`,{
+        method:'PATCH',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify({status:'confirm'})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      if(data.modifiedCount > 0) {
+        //update staet
+        const remaining = jobs.filter(booking => booking._id !==id)
+        const update = jobs.find(booking=>booking._id==id)
+        update.status = 'confirm'
+        const newUpdate = [update,...remaining];
+        setJobs(newUpdate)
+      }
+    })
+}
 
 
   return (
@@ -69,7 +81,7 @@ const MyToys = () => {
       <tbody>
         {/* row 1 */}
        {
-      jobs.map(d=><Table key={d._id}handleDelete={handleDelete} data={d}></Table>)
+      jobs.map(d=><Table key={d._id} handleUpdate={handleUpdate} handleDelete={handleDelete} data={d}></Table>)
        }
       </tbody>
     

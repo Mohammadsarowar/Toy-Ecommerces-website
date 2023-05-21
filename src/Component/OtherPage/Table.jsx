@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UpdateModal from './UpdateModal';
 import Swal from 'sweetalert2'
-const Table = ({data,handleDelete}) => {
+const Table = ({data,handleDelete,handleUpdate}) => {
     const [modalShow, setModalShow] = useState(false);
   
     const {
@@ -16,22 +16,7 @@ const Table = ({data,handleDelete}) => {
         toy_name,
       } = data;
 
-      const handleUpdate = (id) => {
-        fetch(`http://localhost:5000/update/${id}`,{
-            method:'PATCH',
-            headers:{
-                'content-type':'application/json'
-            },
-            body:JSON.stringify({status:'confirm'})
-        })
-        .then(res=>res.json())
-        .then(data=>{
-          console.log(data);
-          if(data.modifiedCount > 0) {
-            //update staet
-          }
-        })
-    }
+
   
     return (
         <div>
